@@ -1,0 +1,30 @@
+
+name: Radar Diario
+on:
+  schedule:
+    - cron: '0 10 * * *'
+    - cron: '0 22 * * *'
+  workflow_dispatch:
+jobs:
+  raspar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests beautifulsoup4 lxml
+      - run: |
+          TODAY=$(date +%F)
+          mkdir -p arquivo/$TODAY
+          python radar-ifch/radar_ifch.py
+          python radar-concursos/radar_final.py
+          python scripts/gerar_index.py
+      - run: |
+          git config user.name "radar-bot"
+          git config user.email "radar@frajola.system"
+          git add arquivo/ index.html || true
+          git diff --staged --quiet || git commit -m "coleta $(date +%F-%H%M)"
+          git push
