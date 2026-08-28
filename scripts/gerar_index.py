@@ -1,10 +1,10 @@
-
 from pathlib import Path
 import datetime
 base=Path("arquivo")
 datas=sorted([p.name for p in base.iterdir() if p.is_dir()], reverse=True) if base.exists() else []
 ultima=datas[0] if datas else datetime.date.today().isoformat()
-html=f'''<!doctype html><html lang=pt-br><head><meta charset=utf-8><meta name=viewport content=width=device-width,initial-scale=1>
+
+html = '''<!doctype html><html lang=pt-br><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1>
 <title>RADAR Acoplado</title>
 <style>
 body{background:#0f1115;color:#e6e6e6;font-family:system-ui;padding:20px}
@@ -16,8 +16,9 @@ a{color:#8ab4f8}.datas{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
 @media(max-width:900px){.grid{grid-template-columns:1fr}}
 .item{padding:8px 0;border-bottom:1px solid #222}
 </style></head><body>
-<h1>Radar Acoplado - {ultima}</h1><p>Espelho GitHub Pages | Local: http://127.0.0.1:8789</p><div class=datas>
-'''
+<h1>Radar Acoplado - __ULTIMA__</h1><p>Espelho GitHub Pages | Local: http://127.0.0.1:8789</p><div class=datas>
+'''.replace('__ULTIMA__', ultima)
+
 for d in datas[:60]:
     cls="ativo" if d==ultima else ""
     html+=f'<a class="{cls}" href="arquivo/{d}/ifch.txt">{d}</a>'
