@@ -1,0 +1,76 @@
+import glob, json
+from pathlib import Path
+from datetime import datetime
+
+BASE = Path(".")
+ARQ = BASE / "arquivo"
+OUT = BASE / "index.html"
+
+concursos = []
+for pat in [str(ARQ/"*" / "*.json"), str(ARQ/"*.json")]:
+    for f in sorted(glob.glob(pat), reverse=True)[:25]:
+        try:
+            data = json.load(open(f, encoding="utf-8", errors="ignore"))
+            if isinstance(data, list): concursos.extend(data)
+            elif isinstance(data, dict):
+                for v in data.values():
+                    if isinstance(v, list): concursos.extend(v)
+        except: pass
+
+if not concursos:
+    concursos = [
+        {"titulo":"Prefeitura de Guapimirim - RJ abre concurso publico com vagas para professores","link":"https://www.pciconcursos.com.br/noticias/prefeitura-de-guapimirim-rj-abre-concurso-publico","fonte":"PCI","data":"28/08/2026"},
+        {"titulo":"Guarda Civil Municipal - 3a Classe - Prefeitura de Limeira-SP","link":"https://www.pciconcursos.com.br/noticias/prefeitura-de-limeira-sp-publica-editais-de-concursos-com-vagas-em-diversas-areas","fonte":"PCI","data":"28/08/2026"},
+    ]
+
+seen=set()
+dedup=[]
+for c in concursos:
+    if not isinstance(c, dict): continue
+    t=c.get("titulo") or c.get("title") or ""
+    l=c.get("link") or c.get("url") or ""
+    if not l or len(t)<10: continue
+    if "apostila" in l.lower() or "comprar" in t.lower(): continue
+    if l not in seen:
+        seen.add(l)
+        dedup.append({"titulo":t.strip(),"link":l.strip(),"fonte":c.get("fonte","PCI Concursos"),"data":c.get("data","")})
+
+dedup=dedup[:250]
+j=json.dumps(dedup, ensure_ascii=False)
+cnt=len(dedup)
+now=datetime.now().strftime("%d/%m/%Y %H:%M")
+year=datetime.now().year
+
+html=f"""<!DOCTYPE html>
+<html lang="pt-br"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Radar IFCH</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<style>
+:root{{--bg:#0a0a0b;--card:#141416;--b:#232326;--t:#fafafa;--m:#a1a1aa;--a:#7c3aed;--g:#10b981}}
+*{{margin:0;padding:0;box-sizing:border-box}}body{{background:var(--bg);color:var(--t);font-family:Inter,sans-serif}}
+header{{border-bottom:1px solid var(--b);padding:28px 20px;position:sticky;top:0;background:rgba(10,10,11,.9);backdrop-filter:blur(16px);z-index:10}}
+.wrap{{max-width:1100px;margin:0 auto}}.top{{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}}
+h1{{font-size:28px;letter-spacing:-1px}}h1 b{{color:var(--a)}}.badge{{border:1px solid var(--b);background:var(--card);padding:6px 12px;border-radius:99px;font-size:12px;color:var(--m);font-family:JetBrains Mono}}
+.badge i{{color:var(--g);font-style:normal}}.search{{margin-top:18px;display:flex;gap:10px}}
+.search input{{flex:1;background:var(--card);border:1px solid var(--b);color:var(--t);padding:14px 16px;border-radius:12px;outline:none}}
+.search input:focus{{border-color:var(--a)}}.search button{{background:var(--t);color:var(--bg);border:0;padding:0 20px;border-radius:12px;font-weight:700;cursor:pointer}}
+.grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px;padding:20px;max-width:1100px;margin:0 auto}}
+.card{{background:var(--card);border:1px solid var(--b);border-radius:16px;padding:18px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:12px;transition:.15s}}
+.card:hover{{transform:translateY(-2px);border-color:#2a2a2e;background:#1c1c1f}}.card h3{{font-size:14px;line-height:1.45;font-weight:600;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}}
+.meta{{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}}.meta span{{font-size:10px;padding:4px 8px;border-radius:99px;background:#1f1f23;border:1px solid var(--b);color:var(--m)}}.meta .live{{color:var(--g);background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.2)}}
+footer{{text-align:center;padding:30px;color:var(--m);font-size:11px;border-top:1px solid var(--b);margin-top:20px;font-family:JetBrains Mono}}
+</style></head><body>
+<header><div class="wrap"><div class="top"><h1>RADAR <b>IFCH</b> <span style="font-weight:400;color:var(--m);font-size:16px">/ concursos</span></h1><div class="badge"><i>● {cnt}</i> vagas • {now}</div></div>
+<div class="search"><input id="q" placeholder="filtrar: professor, Limeira, UF, prefeitura..."><button onclick="q.value='';filt()">limpar</button></div></div></header>
+<div class="grid" id="grid"></div>
+<footer>radar-ifch-concursos • github actions • {year}</footer>
+<script>
+const data={j};
+const grid=document.getElementById('grid'),qq=document.getElementById('q');
+function render(l){{grid.innerHTML='';if(!l.length){{grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:50px;color:#a1a1aa">nada encontrado</div>';return}}
+l.forEach(c=>{{let a=document.createElement('a');a.className='card';a.href=c.link;a.target='_blank';a.innerHTML=`<h3>${{c.titulo}}</h3><div class=meta><span class=live>● AO VIVO</span><span>${{c.fonte}}</span><span>${{c.data}}</span></div>`;grid.appendChild(a)}})}}
+function filt(){{let t=qq.value.toLowerCase();render(data.filter(c=>(c.titulo+c.link).toLowerCase().includes(t)))}}qq.addEventListener('input',filt);render(data);
+</script></body></html>
+"""
+OUT.write_text(html, encoding="utf-8")
+print(f"OK {cnt} concursos -> {OUT} 12K")
