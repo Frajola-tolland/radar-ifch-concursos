@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Radar IFCH v6 - 2026-08-30</title>
+<title>Radar IFCH v5.1.2 - 2026-08-30</title>
 <style>
 :root{--bg:#0a0a0a;--card:#151515;--border:#262626;--text:#e5e5e5;--muted:#888;--accent:#8ab4ff;--ifch:#34d399}
 body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);margin:0;padding:20px}
@@ -17,7 +17,7 @@ input,select{background:#111;border:1px solid var(--border);color:var(--text);pa
 .card{background:var(--card);border:1px solid var(--border);padding:14px;border-radius:12px;margin-bottom:10px;line-height:1.5}
 .card a.title{color:var(--text);text-decoration:none;font-weight:600;display:block;margin-bottom:6px;font-size:15px}
 .card a.title:hover{color:var(--accent)}
-.card a.link{color:var(--accent);font-size:12px;word-break:break-all}
+.card a.link{color:var(--accent);font-size:12px;word-break:break-all;display:block;margin-top:4px}
 .badge{font-size:10px;padding:3px 8px;border-radius:20px;background:#222;margin-right:6px;display:inline-block;text-transform:uppercase}
 .badge.ifch{background:var(--ifch);color:#000}
 .meta{color:var(--muted);font-size:11px;margin-top:6px}
@@ -27,26 +27,22 @@ input,select{background:#111;border:1px solid var(--border);color:var(--text);pa
 </style>
 </head>
 <body>
-<h2 style="margin:0 0 6px 0">RADAR IFCH v6 - 2026-08-30</h2>
-<div style="color:#888;font-size:12px;margin-bottom:16px">BANCO: <span id="totalBanco">...</span> itens | <a href="arquivo/todos_concursos.json" style="color:#8ab4ff">concursos.json</a> | <a href="arquivo/todos_ifch.json" style="color:#34d399">ifch.json</a> | <a href="arquivo/todos_palestras.json" style="color:#8ab4ff">palestras.json</a></div>
-
+<h2 style="margin:0 0 6px 0">RADAR IFCH v5.1.2 - 2026-08-30</h2>
+<div style="color:#888;font-size:12px;margin-bottom:16px">BANCO: <span id="totalBanco">...</span> | <a href="arquivo/todos_concursos.json" style="color:#8ab4ff">concursos.json</a> | <a href="arquivo/todos_ifch.json" style="color:#34d399">ifch.json</a></div>
 <div class="tabs">
 <div class="tab active" data-cat="concursos" onclick="setCat('concursos')">CONCURSOS (<span id="count-concursos">0</span>)</div>
 <div class="tab ifch" data-cat="presenciais" onclick="setCat('presenciais')">IFCH / PRESENCIAIS RMB (<span id="count-presenciais">0</span>)</div>
 <div class="tab" data-cat="online" onclick="setCat('online')">ONLINE BRASIL (<span id="count-online">0</span>)</div>
 <div class="tab" data-cat="minicursos" onclick="setCat('minicursos')">MINICURSOS (<span id="count-minicursos">0</span>)</div>
 </div>
-
 <div class="controls">
-<input id="busca" placeholder="Buscar prefeitura, filosofia, IFCH, Belém, ANPOF..." oninput="filtrar()">
-<select id="filtroArea" onchange="filtrar()"><option value="">Todas</option><option value="filosofia">Filosofia</option><option value="sociais">Sociais</option><option value="ifch">IFCH</option><option value="belem">RMB</option></select>
+<input id="busca" placeholder="Buscar..." oninput="filtrar()">
+<select id="filtroArea" onchange="filtrar()"><option value="">Todas</option><option value="filosofia">Filosofia</option><option value="pphist">PPHIST</option><option value="ifch">IFCH</option><option value="ufpa">UFPA</option></select>
 <select id="ordenar" onchange="filtrar()"><option value="recente">Recente</option><option value="antigo">Antigo</option><option value="az">A-Z</option></select>
 </div>
-
 <div id="contador"></div>
 <div id="lista"></div>
 <div class="pager"><button id="prevBtn" onclick="pagina--,render()">Anterior</button><span id="pagInfo"></span><button id="nextBtn" onclick="pagina++,render()">Proxima</button></div>
-
 <script>
 let BANCO_CONCURSOS=[],BANCO_IFCH=[],BANCO_PALESTRAS=[],categoria='concursos',filtrados=[],pagina=1;const POR_PAGINA=20;
 async function carregar(){
@@ -54,11 +50,10 @@ async function carregar(){
   try{const r2=await fetch('arquivo/todos_ifch.json?'+Date.now());BANCO_IFCH=await r2.json();}catch(e){BANCO_IFCH=[]}
   try{const r3=await fetch('arquivo/todos_palestras.json?'+Date.now());BANCO_PALESTRAS=await r3.json();}catch(e){BANCO_PALESTRAS=[]}
   document.getElementById('count-concursos').textContent=BANCO_CONCURSOS.length;
-  const presTotal=BANCO_PALESTRAS.filter(p=>p.categoria==='presenciais').length + BANCO_IFCH.length;
-  document.getElementById('count-presenciais').textContent=presTotal;
+  document.getElementById('count-presenciais').textContent=BANCO_IFCH.length;
   document.getElementById('count-online').textContent=BANCO_PALESTRAS.filter(p=>p.categoria==='online').length;
   document.getElementById('count-minicursos').textContent=BANCO_PALESTRAS.filter(p=>p.categoria==='minicursos').length;
-  document.getElementById('totalBanco').textContent=BANCO_CONCURSOS.length+BANCO_PALESTRAS.length+BANCO_IFCH.length;
+  document.getElementById('totalBanco').textContent=BANCO_CONCURSOS.length+BANCO_IFCH.length+BANCO_PALESTRAS.length;
   filtrar();
 }
 function setCat(cat){categoria=cat;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelector('[data-cat="'+cat+'"]').classList.add('active');pagina=1;filtrar();}
@@ -68,13 +63,12 @@ function filtrar(){
   const ordem=document.getElementById('ordenar').value;
   let base=[];
   if(categoria==='concursos') base=BANCO_CONCURSOS;
-  else if(categoria==='presenciais') {
-    base=[...BANCO_IFCH, ...BANCO_PALESTRAS.filter(p=>p.categoria==='presenciais')];
-  } else base=BANCO_PALESTRAS.filter(p=>p.categoria===categoria);
+  else if(categoria==='presenciais') base=BANCO_IFCH;
+  else base=BANCO_PALESTRAS.filter(p=>p.categoria===categoria);
   filtrados=base.filter(it=>{
     const txt=(it.titulo||'').toLowerCase();
     if(q&&!txt.includes(q)) return false;
-    if(area&&!txt.includes(area)&&!(it.area||'').toLowerCase().includes(area)) return false;
+    if(area&&!txt.includes(area)) return false;
     return true;
   });
   if(ordem==='az') filtrados.sort((a,b)=>(a.titulo||'').localeCompare(b.titulo||''));
@@ -89,10 +83,10 @@ function render(){
   document.getElementById('pagInfo').textContent=pagina+'/'+totalPag;
   document.getElementById('prevBtn').disabled=pagina<=1;document.getElementById('nextBtn').disabled=pagina>=totalPag;
   const lista=document.getElementById('lista');lista.innerHTML='';
-  if(slice.length===0){lista.innerHTML='<div class="card">Nenhum resultado. Verifique se a pasta IFCH tem arquivos em arquivo/*/ifch.txt</div>';return;}
+  if(slice.length===0){lista.innerHTML='<div class="card">Nenhum resultado nesta aba. Troque para CONCURSOS se apagou a pasta.</div>';return;}
   for(const it of slice){
     const el=document.createElement('div');el.className='card';
-    const isIFCH=(it.categoria_origem!=='concursos' || (it.titulo||'').toLowerCase().includes('ifch') || (it.titulo||'').toLowerCase().includes('ufpa'));
+    const isIFCH=categoria==='presenciais' || it.categoria_origem==='ifch';
     const badgeClass=isIFCH?'badge ifch':'badge';
     const badgeText=isIFCH?'IFCH':(it.categoria||'concurso').toUpperCase();
     const linkHtml=it.link?'<a class="link" href="'+it.link+'" target="_blank">🔗 '+it.link+'</a>':'';
