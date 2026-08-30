@@ -4,7 +4,7 @@
 <style>
 body{font-family:Inter,Arial;max-width:1000px;margin:auto;padding:20px;background:#f8fafc}
 h1{font-size:20px}
-.tabs{display:flex;gap:8px;margin:16px 0}
+.tabs{display:flex;gap:8px;margin:16px 0;flex-wrap:wrap}
 .tab{padding:8px 14px;border-radius:20px;border:1px solid #ddd;cursor:pointer;background:#fff}
 .tab.active{background:#111;color:#fff}
 .card{border:1px solid #e5e7eb;background:#fff;padding:14px;margin:10px 0;border-radius:12px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
@@ -17,42 +17,44 @@ a{color:#2563eb;word-break:break-all}
 </style></head><body>
 <div class="header">
 <h1 id="titulo">Radar IFCH V6.2 - 2026-08-30 - BANCO: carregando...</h1>
-<p style="color:#666;font-size:13px">Filtro: Presencial = RMB Belém + Online = Brasil Filosofia/Ciências Humanas | Fonte: PCI_PA + UFPA + FADESP + CEBRASPE | Atualização 10h e 22h</p>
+<p style="color:#666;font-size:13px">Filtro: Presencial = RMB Belem + Online = Brasil Filosofia/Ciencias Humanas | Fonte: PCI_PA + UFPA | Atualizacao 10h e 22h</p>
 <div class="tabs">
-<div class="tab active" onclick="showTab('pa')">Concursos PA (<span id="c-pa">0</span>)</div>
-<div class="tab" onclick="showTab('ifch')">IFCH/UFPA (<span id="c-ifch">0</span>)</div>
-<div class="tab" onclick="showTab('pal')">Palestras (<span id="c-pal">0</span>)</div>
+<div class="tab active" id="tab-pa" onclick="showTab('pa')">Concursos PA (<span id="c-pa">0</span>)</div>
+<div class="tab" id="tab-ifch" onclick="showTab('ifch')">IFCH/UFPA (<span id="c-ifch">0</span>)</div>
+<div class="tab" id="tab-pal" onclick="showTab('pal')">Palestras (<span id="c-pal">0</span>)</div>
 </div>
 </div>
 <div id="list-pa"></div>
 <div id="list-ifch" style="display:none"></div>
 <div id="list-pal" style="display:none"></div>
-
 <script>
 let DB={pa:[],ifch:[],pal:[]};
 function card(c,cls,label){
- return `<div class="card"><span class="badge ${cls}">${label}</span><b>${c.titulo}</b><br><a href="${c.link}" target="_blank">${c.link}</a></div>`;
+ return '<div class="card"><span class="badge '+cls+'">'+label+'</span><b>'+c.titulo+'</b><br><a href="'+c.link+'" target="_blank">'+c.link+'</a></div>';
 }
 function render(){
  document.getElementById('c-pa').textContent=DB.pa.length;
  document.getElementById('c-ifch').textContent=DB.ifch.length;
  document.getElementById('c-pal').textContent=DB.pal.length;
- document.getElementById('titulo').textContent=`Radar IFCH V6.2 - 2026-08-30 - BANCO: ${DB.pa.length+DB.ifch.length+DB.pal.length} | ${DB.pa.length} concursos PA + ${DB.ifch.length} IFCH + ${DB.pal.length} palestras`;
+ document.getElementById('titulo').textContent='Radar IFCH V6.2 - 2026-08-30 - BANCO: '+(DB.pa.length+DB.ifch.length+DB.pal.length)+' | '+DB.pa.length+' concursos PA + '+DB.ifch.length+' IFCH + '+DB.pal.length+' palestras';
  document.getElementById('list-pa').innerHTML=DB.pa.map(c=>card(c,'badge-pa',c.titulo.split(']')[0].replace('[',''))).join('') || '<div class=card>Nenhum concurso PA hoje</div>';
  document.getElementById('list-ifch').innerHTML=DB.ifch.map(c=>card(c,'badge-ifch','IFCH')).join('');
- document.getElementById('list-pal').innerHTML=DB.pal.map(c=>card(c,'badge-pal','PALESTRA')).join('') || '<div class=card>Nenhuma palestra - V6.3 em implantação</div>';
+ document.getElementById('list-pal').innerHTML=DB.pal.map(c=>card(c,'badge-pal','PALESTRA')).join('') || '<div class=card>Nenhuma palestra - V6.3 em implantacao</div>';
 }
 function showTab(t){
  document.querySelectorAll('.tab').forEach(e=>e.classList.remove('active'));
  document.getElementById('list-pa').style.display=t==='pa'?'block':'none';
  document.getElementById('list-ifch').style.display=t==='ifch'?'block':'none';
  document.getElementById('list-pal').style.display=t==='pal'?'block':'none';
- event.target.classList.add('active');
+ document.getElementById('tab-'+t).classList.add('active');
 }
 Promise.all([
  fetch('arquivo/todos_concursos.json?'+Date.now()).then(r=>r.json()),
  fetch('arquivo/todos_ifch.json?'+Date.now()).then(r=>r.json()),
  fetch('arquivo/todos_palestras.json?'+Date.now()).then(r=>r.json())
-]).then(([pa][ifch][pal])=>{DB={pa,ifch,pal}; render();});
+]).then(arr=>{
+ DB={pa:arr[0],ifch:arr[1],pal:arr[2]};
+ render();
+});
 </script>
 </body></html>
