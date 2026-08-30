@@ -1,5 +1,845 @@
 [
   {
+    "titulo": "DEPA - Diretoria de Educação Preparatória e Assistencial (Exército)",
+    "link": "https://www.pciconcursos.com.br/noticias/decex-brasil-divulga-retificacao-de-processo-seletivo-para-colegios-militares",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Autarquia Municipal de Saúde de Itapecerica da Serra",
+    "link": "https://www.pciconcursos.com.br/noticias/autarquia-municipal-de-saude-de-itapecerica-da-serra-sp-abre-concurso-publico-com-salarios-de-ate-11576",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "INOVA OZ - Agência de Inovação e Desenvolvimento Tecnológico de Osasco S.A.",
+    "link": "https://www.pciconcursos.com.br/noticias/inova-oz-sp-abre-concurso-publico-com-salarios-de-ate-5435",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura da Estância Balneária de Ilhabela",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-ilhabela-sp-retifica-edital-de-concurso-publico-com-remuneracoes-de-ate-12579",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Limeira",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-limeira-sp-publica-editais-de-concursos-com-vagas-em-diversas-areas",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Assis",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-assis-sp-abre-concurso-publico-com-salarios-de-ate-8510",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Colômbia",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-colombia-sp-abre-concurso-publico-com-salarios-de-ate-7825",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Itaju",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-itaju-sp-abre-concurso-publico-para-agente-administrativo",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de José Bonifácio",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-jose-bonifacio-sp-divulga-retificacao-de-concurso-publico",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Vargem Grande do Sul",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-vargem-grande-do-sul-sp-abre-vaga-para-analista-contabil",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "CaraguaPrev - Instituto de Previdência do Município de Caraguatatuba",
+    "link": "https://www.pciconcursos.com.br/noticias/caraguaprev-sp-abre-concurso-publico-com-salarios-de-ate-7104",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "CIMPS - Consórcio Intermunicipal de Políticas Sociais",
+    "link": "https://www.pciconcursos.com.br/noticias/cimps-sp-abre-concurso-publico-para-auxiliar-administrativo-e-gerente-administrativo",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "CONDERG - Consórcio de Desenvolvimento da Região de Governo de São João da Boa Vista",
+    "link": "https://www.pciconcursos.com.br/noticias/conderg-sp-abre-processo-seletivo-com-salarios-de-ate-6009",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "CRECI - Conselho Regional de Corretores de Imóveis do Estado de São Paulo",
+    "link": "https://www.pciconcursos.com.br/noticias/creci-sp-anuncia-concurso-publico-com-salarios-de-ate-9940",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "DAAEA - Departamento Autônomo de Água e Esgoto de Avanhandava",
+    "link": "https://www.pciconcursos.com.br/noticias/daaea-de-avanhandava-sp-abre-concurso-para-auxiliar-de-tratamento-de-agua-e-operador-de-maquina",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "EMDAEP - Empresa de Desenvolvimento, Água, Esgoto e Pavimentação de Dracena",
+    "link": "https://www.pciconcursos.com.br/noticias/emdaep-de-dracena-sp-abre-concurso-com-vagas-imediatas-e-cadastro-de-reserva",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "FAMESP - Fundação para o Desenvolvimento Médico e Hospitalar",
+    "link": "https://www.pciconcursos.com.br/noticias/famesp-sp-abre-processos-seletivos-com-salarios-de-ate-6077-em-botucatu",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "FHSL - Fundação Hospital Santa Lydia",
+    "link": "https://www.pciconcursos.com.br/noticias/fundacao-hospital-santa-lydia-sp-abre-processo-seletivo-com-salarios-de-ate-5060",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "FSA - Fundação Santo André",
+    "link": "https://www.pciconcursos.com.br/noticias/fundacao-santo-andre-sp-retifica-edital-de-concurso-publico-para-o-cargo-de-consultor-juridico",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "FUNCAMP - Fundação de Desenvolvimento da Unicamp",
+    "link": "https://www.pciconcursos.com.br/noticias/funcamp-sp-abre-processo-seletivo-para-medico-radiologista-no-hospital-de-clinicas",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "FUNDACI - Fundação Arte e Cultura de Ilhabela",
+    "link": "https://www.pciconcursos.com.br/noticias/fundaci-de-ilhabela-sp-abre-concurso-publico-para-cargos-de-nivel-superior",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "HCFMRP-USP - Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo",
+    "link": "https://www.pciconcursos.com.br/noticias/hcfmrp-usp-sp-abre-concursos-publicos-para-contratacao-de-medicos-em-duas-especialidades",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "HES - Hospital Estadual Sumaré (FUNCAMP)",
+    "link": "https://www.pciconcursos.com.br/noticias/funcamp-sp-abre-vaga-para-eletricista-no-hospital-estadual-sumare",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "IPAM - Instituto de Previdência Municipal de Aparecida D'Oeste",
+    "link": "https://www.pciconcursos.com.br/noticias/ipm-de-aparecida-doeste-sp-abre-concurso-para-procurador-juridico-previdenciario-e-analista-previdenciario",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "IPMS - Instituto de Previdência do Município de Suzano",
+    "link": "https://www.pciconcursos.com.br/noticias/ipms-de-suzano-sp-retifica-edital-de-concurso-publico-com-salarios-de-ate-5186",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "MPSP - Ministério Público do Estado de São Paulo",
+    "link": "https://www.pciconcursos.com.br/noticias/mp-sp-abre-concurso-publico-para-analista-de-promotoria-terapeuta-ocupacional",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "PM - Polícia Militar do Estado de São Paulo",
+    "link": "https://www.pciconcursos.com.br/noticias/pm-sp-abre-concurso-com-2000-vagas-para-aluno-soldado",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura da Estância Balneária de Itanhaém",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-itanhaem-sp-abre-concurso-com-20-vagas-para-guardas-civis-municipais",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura da Estância Hidromineral de Serra Negra",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-serra-negra-sp-abre-concurso-com-vagas-imediatas-e-cadastro-de-reserva",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura da Estância Turística de Ibiúna",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-ibiuna-sp-abre-selecao-com-salarios-de-ate-4545",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura da Estância Turística de Jahu",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-jahu-sp-abre-concurso-publico-com-salarios-de-ate-4751",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura da Estância Turística de Paranapanema",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-paranapanema-sp-abre-concurso-publico-com-vagas-imediatas-e-cadastro-de-reserva",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura da Estância Turística de Piraju",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-da-estancia-turistica-de-piraju-sp-retifica-edital-de-concurso-publico",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura da Estância Turística de São Roque",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-roque-sp-abre-concurso-publico-com-vagas-imediatas-e-cadastro-de-reserva",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Andradina",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-andradina-sp-retifica-concurso-publico-para-profissionais-da-educacao",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Anhembi",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-anhembi-sp-abre-concurso-publico-com-salarios-de-ate-6407",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Ariranha",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-ariranha-sp-abre-concurso-com-vagas-imediatas-e-cadastro-de-reserva",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Auriflama",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-auriflama-sp-retifica-concurso-publico-com-vagas-para-diversos-cargos",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Bariri",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-bariri-sp-publica-retificacoes-do-concurso-com-salarios-de-ate-19593",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Cafelândia",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-cafelandia-sp-abre-concurso-publico-com-salarios-de-ate-9028",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Cajamar",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-cajamar-sp-retifica-concurso-publico-para-professores",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Colina",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-colina-sp-abre-concursos-para-assistente-educacional-e-auxiliar-operacional-de-servicos-gerais",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Cruzália",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-cruzalia-sp-divulga-retificacao-de-processo-seletivo-e-mantem-concurso-inalterado",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Diadema",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-diadema-sp-divulga-concursos-publicos-com-salarios-de-ate-4512",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Embu das Artes",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-embu-das-artes-sp-reabre-inscricoes-de-concurso-publico-com-vagas-imediatas-e-cadastro-de-reserva",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Estância Turística de Brotas",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-brotas-sp-reabre-inscricoes-para-o-concurso-com-salarios-de-ate-19354",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Gavião Peixoto",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-gaviao-peixoto-sp-abre-concurso-publico-para-motorista-plantonista-e-tecnico-em-enfermagem",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Guaimbê",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-guaimbe-sp-abre-concurso-publico-com-salarios-de-ate-12565",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Guarantã",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-guaranta-sp-abre-concurso-publico-para-diversos-niveis-de-escolaridade",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Guariba",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-guariba-sp-retifica-concurso-publico-com-salarios-de-ate-9147",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Guarulhos",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-guarulhos-sp-abre-quatro-concursos-publicos-com-salarios-de-ate-4297",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Herculândia",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-herculandia-sp-reabre-inscricoes-do-concurso-publico-para-cargos-de-nivel-superior",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Ilhabela",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-ilhabela-sp-retifica-edital-de-processo-seletivo-com-vagas-para-professores-e-auxiliares",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Itatinga",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-itatinga-sp-abre-concurso-publico-para-a-guarda-civil-municipal",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Itupeva",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-itupeva-sp-abre-concurso-publico-para-guarda-civil-municipal",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Mairiporã",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-mairipora-sp-abre-concurso-publico-com-salarios-de-ate-5574",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Mirante do Paranapanema",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-mirante-do-paranapanema-sp-abre-concurso-publico-para-cargos-de-nivel-medio-e-superior",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Mogi Mirim",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-mogi-mirim-sp-abre-concursos-e-processo-seletivo-com-vagas-para-diversas-areas",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Nova Independência",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-nova-independencia-sp-abre-concurso-publico-com-salarios-de-ate-5939",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Paulínia",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-paulinia-sp-prorroga-inscricoes-de-processo-seletivo-com-salarios-de-ate-7350",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Pedranópolis",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-pedranopolis-sp-retifica-edital-do-concurso-publico-para-agentes-comunitarios-de-saude",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Pedrinhas Paulista",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-pedrinhas-paulista-sp-abre-concurso-publico-para-o-cargo-de-motorista",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Pirangi",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-pirangi-sp-abre-processo-seletivo-com-vaga-para-assistente-social",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Rincão",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-rincao-sp-divulga-retificacao-do-concurso-publico-com-vagas-imediatas-e-cadastro-de-reserva",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Santa Maria da Serra",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-santa-maria-da-serra-sp-anuncia-concurso-publico-com-salarios-de-ate-6038",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Santana de Parnaíba",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-santana-de-parnaiba-sp-abre-concursos-para-medicos-e-agentes-de-transito",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Santo Anastácio",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-santo-anastacio-sp-abre-processo-seletivo-com-salarios-de-ate-4098",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Santos",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-santos-sp-divulga-retificacoes-de-concursos-publicos",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de São Pedro do Turvo",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-pedro-do-turvo-sp-abre-concurso-publico-com-salarios-de-ate-4957",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Serra Negra",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-serra-negra-sp-abre-concurso-publico-para-guarda-civil-municipal",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Taquarituba",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-taquarituba-sp-abre-concurso-publico-com-salarios-de-ate-22537",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Valinhos",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-valinhos-sp-prorroga-inscricoes-do-concurso-publico-para-o-cargo-de-procurador",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "SAAEI - Serviço Autônomo de Água e Esgoto de Itápolis",
+    "link": "https://www.pciconcursos.com.br/noticias/saaei-de-itapolis-sp-retifica-edital-do-concurso-publico-com-vagas-imediatas-e-cadastro-de-reserva",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "SÃO SEBASTIÃO PREV - Instituto Previdenciário do Município de São Sebastião",
+    "link": "https://www.pciconcursos.com.br/noticias/sao-sebastiao-prev-sp-abre-concurso-publico-com-salarios-de-ate-5712",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "SETEC - Serviços Técnicos Gerais de Campinas",
+    "link": "https://www.pciconcursos.com.br/noticias/setec-campinas-sp-abre-concurso-publico-com-salarios-de-ate-10428",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "TCESP - Tribunal de Contas do Estado de São Paulo",
+    "link": "https://www.pciconcursos.com.br/noticias/tce-sp-divulga-retificacao-do-concurso-publico-para-auditor-de-controle-externo",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "UNESP - Universidade Estadual Paulista",
+    "link": "https://www.pciconcursos.com.br/noticias/unesp-sp-abre-concurso-para-o-cargo-de-assistente-administrativo-ii",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "UNESP - Universidade Estadual Paulista \"Júlio de Mesquita Filho\"",
+    "link": "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-para-psicologo-em-sao-jose-do-rio-preto-sp",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Guapimirim",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-guapimirim-rj-abre-concurso-publico-com-vagas-para-professores",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "CIDENNF - Consórcio Público Intermunicipal de Desenvolvimento do Norte e Noroeste Fluminense",
+    "link": "https://www.pciconcursos.com.br/noticias/cidennf-rj-abre-concurso-publico-com-salarios-de-ate-5637",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "CRA/RJ - Conselho Regional de Administração do Rio de Janeiro",
+    "link": "https://www.pciconcursos.com.br/noticias/cra-rj-divulga-retificacao-do-concurso-publico-com-salarios-ate-6369",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Marinha do Brasil - Comando do 1º Distrito Naval",
+    "link": "https://www.pciconcursos.com.br/noticias/comando-do-1-distrito-naval-da-marinha-rj-abre-processo-seletivo-para-oficiais-de-3-classe",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Arraial do Cabo",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-arraial-do-cabo-rj-retifica-processo-seletivo-para-agentes-de-saude-e-de-endemias",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Engenheiro Paulo de Frontin",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-engenheiro-paulo-de-frontin-rj-abre-concurso-com-salarios-de-ate-4277",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "SES - Secretaria de Estado de Saúde e IASERJ - Instituto de Assistência dos Servidores do Estado do Rio de Janeiro",
+    "link": "https://www.pciconcursos.com.br/noticias/ses-e-iaserj-rj-abrem-concurso-publico-com-vagas-de-nivel-medio-e-superior",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "UERJ - Universidade do Estado do Rio de Janeiro",
+    "link": "https://www.pciconcursos.com.br/noticias/uerj-rj-abre-selecao-para-residencia-em-enfermagem",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "UFRRJ - Universidade Federal Rural do Rio de Janeiro",
+    "link": "https://www.pciconcursos.com.br/noticias/ufrrj-rj-abre-concurso-publico-para-cargos-tecnico-administrativos-de-nivel-superior",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "DMAE - Departamento Municipal de Água e Esgoto de Uberlândia",
+    "link": "https://www.pciconcursos.com.br/noticias/dmae-de-uberlandia-mg-abre-concurso-publico-com-vagas-para-diversos-niveis-de-escolaridade",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "ITABIRAPREV - Instituto de Previdência de Itabira",
+    "link": "https://www.pciconcursos.com.br/noticias/itabiraprev-mg-abre-concurso-publico-com-salarios-de-ate-6280",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Prefeitura de Paracatu",
+    "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-paracatu-mg-publica-edital-retificado-de-concurso-publico",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Augusto de Lima",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-augusto-de-lima-mg-abre-concurso-para-motorista-e-auxiliar-administrativo-e-legislativo",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Bocaina de Minas",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-bocaina-de-minas-mg-abre-concurso-publico-com-salarios-de-1621",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Bom Despacho",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-bom-despacho-mg-abre-concurso-com-salarios-de-ate-6210",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Cajuri",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-cajuri-mg-abre-concurso-publico-com-vagas-de-nivel-fundamental-e-medio",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Capelinha",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-capelinha-mg-retifica-edital-do-concurso-publico-com-salarios-de-ate-4527",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Divisa Nova",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-divisa-nova-mg-abre-concurso-publico-para-agente-de-contratacao-e-contador",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Dom Silvério",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-dom-silverio-mg-abre-concurso-com-vagas-imediatas-e-cadastro-de-reserva",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Dores do Indaiá",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-dores-do-indaia-mg-abre-concurso-publico-com-salarios-de-ate-4500",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Governador Valadares",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-governador-valadares-mg-retifica-edital-de-concurso-publico-com-salarios-de-ate-5135",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Ingaí",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-ingai-mg-abre-concurso-publico-para-o-cargo-de-auxiliar-administrativo",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Itacarambi",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-itacarambi-mg-abre-concurso-publico-para-diversos-cargos",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de João Monlevade",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-joao-monlevade-mg-abre-concurso-publico-para-cargos-de-nivel-medio",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Lambari",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-lambari-mg-abre-concurso-publico-com-salarios-de-ate-5500",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Nova Ponte",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-nova-ponte-mg-reabre-concurso-publico-para-profissionais-de-nivel-medio-e-superior",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Passos",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-passos-mg-retifica-edital-de-concurso-publico",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Pedras de Maria da Cruz",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-pedras-de-maria-da-cruz-mg-abre-concurso-publico-para-niveis-fundamental-e-medio",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Prudente de Morais",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-prudente-de-morais-mg-abre-concurso-para-auxiliar-administrativo-e-auxiliar-de-servicos-gerais",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Rio Piracicaba",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-rio-piracicaba-mg-abre-concurso-publico-com-salarios-de-ate-4000",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Santa Juliana",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-santa-juliana-mg-abre-concurso-para-profissionais-de-nivel-medio-e-superior",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Santa Margarida",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-santa-margarida-mg-publica-edital-de-concurso-com-salarios-de-ate-5313",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Câmara de Tiradentes",
+    "link": "https://www.pciconcursos.com.br/noticias/camara-de-tiradentes-mg-abre-concurso-publico-para-controlador-interno-e-tesoureiro",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "CIDASG - Consórcio Intermunicipal para o Desenvolvimento do Alto Suaçuí Grande",
+    "link": "https://www.pciconcursos.com.br/noticias/cidasg-mg-atualiza-edital-de-concurso-publico-para-cargos-de-nivel-medio-e-superior",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "CIMAG - Consórcio Público Intermunicipal Multifinalitário da Microrregião do Circuito das Águas",
+    "link": "https://www.pciconcursos.com.br/noticias/cimag-abre-concurso-publico-para-medicos-veterinarios-com-salarios-de-ate-8300",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "CIS-VERDE - Consórcio Intermunicipal Multifinalitário",
+    "link": "https://www.pciconcursos.com.br/noticias/cis-verde-mg-abre-processo-seletivo-para-auxiliar-administrativo",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "CISICOM - Consórcio Intermunicipal dos Serviços de Inspeção do Centro-Oeste Mineiro",
+    "link": "https://www.pciconcursos.com.br/noticias/cisicom-mg-anuncia-concurso-publico-com-vaga-para-medico-veterinario",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "CISRU - Consórcio Intermunicipal de Saúde da Rede de Urgência Centro Sul",
+    "link": "https://www.pciconcursos.com.br/noticias/cisru-centro-sul-mg-abre-processo-seletivo-para-o-cargo-de-auxiliar-de-farmacia-no-samu-192",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "CONSANE - Consórcio Regional de Saneamento Básico",
+    "link": "https://www.pciconcursos.com.br/noticias/consane-mg-abre-processo-seletivo-para-engenheiro-e-analista-ambiental",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "CREA - Conselho Regional de Engenharia e Agronomia de Minas Gerais",
+    "link": "https://www.pciconcursos.com.br/noticias/crea-mg-concurso-publico-oferece-vagas-com-salarios-iniciais-de-ate-13609",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "EMATER - Empresa de Assistência Técnica e Extensão Rural do Estado de Minas Gerais",
+    "link": "https://www.pciconcursos.com.br/noticias/emater-mg-anuncia-concurso-publico-com-salarios-de-ate-7321",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
+    "titulo": "Faculdade Felício Rocho",
+    "link": "https://www.pciconcursos.com.br/noticias/faculdade-felicio-rocho-mg-abre-processo-seletivo-para-especializacao-medica-e-fellowship",
+    "data": "2026-08-30",
+    "origem": "arquivo/2026-08-30/concursos.txt",
+    "categoria_origem": "concursos"
+  },
+  {
     "titulo": "23.729 vagas em concursos",
     "link": "https://www.pciconcursos.com.br/concursos/",
     "data": "2026-08-29",
