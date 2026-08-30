@@ -1,58 +1,147 @@
-<!doctype html><html lang="pt-br"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RADAR IFCH v3</title>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar IFCH v5 - Banco Dinamico</title>
 <style>
-:root{--bg:#070709;--card:#121214;--card2:#19191c;--border:#26262a;--text:#e8e8ea;--muted:#8a8a93;--accent:#a855f7;--green:#10b981}
-*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
-header{position:sticky;top:0;z-index:50;background:rgba(7,7,9,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 20px}
-.top{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-h1{font-size:20px}h1 b{color:var(--accent)}
-.meta{font-family:monospace;font-size:11px;color:var(--muted);background:var(--card);border:1px solid var(--border);padding:6px 10px;border-radius:999px}
-.tabs{max-width:1100px;margin:18px auto 0;padding:0 20px;display:flex;gap:8px}
-.tab{padding:10px 16px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--muted);cursor:pointer;font-size:13px;font-weight:700}
-.tab.active{background:#fff;color:#000}
-.search-wrap{max-width:1100px;margin:12px auto;padding:0 20px}
-#q{width:100%;background:var(--card);border:1px solid var(--border);color:var(--text);padding:14px;border-radius:12px;outline:none}
-.grid{max-width:1100px;margin:0 auto;padding:18px 20px 80px;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit}
-.card:hover{transform:translateY(-2px);background:var(--card2)}
-.card.ifch-card{border-color:#2d2040}
-.card h3{font-size:14px;line-height:1.35}
-.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
-.badge{font-size:10px;padding:4px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted);font-family:monospace}
-.badge.live{background:rgba(16,185,129,.15);color:var(--green);border-color:rgba(16,185,129,.3)}
-.badge.ifch{background:rgba(168,85,247,.15);color:#a855f7;border-color:rgba(168,85,247,.3)}
-.section{display:none}.section.active{display:grid}
-footer{border-top:1px solid var(--border);padding:18px;text-align:center;color:var(--muted);font-family:monospace;font-size:10px}
-</style></head><body>
-<header><div class="top"><h1>RADAR <b>IFCH</b> <small style="color:var(--muted);font-size:12px">/ v3 abas</small></h1><div class="meta">6 concursos • 1 IFCH • 30/08/2026 09:41</div></div></header>
+:root{--bg:#0a0a0a;--card:#141414;--border:#222;--text:#e5e5e5;--muted:#888;--accent:#8ab4ff}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);margin:0;padding:20px}
+header{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:16px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{padding:10px 16px;background:#1a1a1a;border:1px solid var(--border);border-radius:999px;cursor:pointer;font-size:14px}
+.tab.active{background:#fff;color:#000;font-weight:700}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+input,select{background:#111;border:1px solid var(--border);color:var(--text);padding:10px 12px;border-radius:8px}
+#busca{min-width:260px;flex:1}
+.card{background:var(--card);border:1px solid var(--border);padding:14px;border-radius:12px;margin-bottom:10px;line-height:1.4}
+.card a{color:var(--accent);text-decoration:none;font-weight:600}
+.card a:hover{text-decoration:underline}
+.badge{font-size:11px;padding:3px 8px;border-radius:20px;background:#222;margin-right:6px;display:inline-block}
+.meta{color:var(--muted);font-size:12px;margin-top:6px}
+.pager{display:flex;gap:8px;justify-content:center;margin:20px 0}
+.pager button{padding:8px 14px;background:#1a1a1a;border:1px solid var(--border);color:var(--text);border-radius:8px;cursor:pointer}
+.pager button:disabled{opacity:0.3}
+#contador{color:var(--muted);font-size:13px;margin:8px 0}
+</style>
+</head>
+<body>
+<header>
+<h2 style="margin:0">RADAR IFCH v5 - 2026-08-30</h2>
+<div style="color:var(--muted);font-size:13px">BANCO: <span id="totalBanco">carregando...</span> itens | <a href="arquivo/todos_concursos.json" style="color:var(--accent)">ver JSON bruto</a></div>
+</header>
+
 <div class="tabs">
-<button class="tab active" data-t="conc">CONCURSOS PUBLICOS <span>6</span></button>
-<button class="tab" data-t="ifch">IFCH / UFPA <span>1</span></button>
-<button class="tab" data-t="all">TUDO</button>
+<div class="tab active" data-cat="concursos" onclick="setCat('concursos')">CONCURSOS (<span id="count-concursos">0</span>)</div>
+<div class="tab" data-cat="presenciais" onclick="setCat('presenciais')">PRESENCIAIS RMB (<span id="count-presenciais">0</span>)</div>
+<div class="tab" data-cat="online" onclick="setCat('online')">ONLINE BRASIL (<span id="count-online">0</span>)</div>
+<div class="tab" data-cat="minicursos" onclick="setCat('minicursos')">MINICURSOS (<span id="count-minicursos">0</span>)</div>
 </div>
-<div class="search-wrap"><input id="q" placeholder="filtrar: professor, Limeira, PPHIST, edital..."></div>
-<div id="grid-conc" class="grid section active">
-<a class="card" href="https://www.pciconcursos.com.br/noticias/transpetro-publica-editais-retificados-de-processos-seletivos-para-diversos-cargos" target="_blank" data-title="transpetro publica editais retificados de processos seletivos para diversos cargos"><h3>Transpetro publica editais retificados de processos seletivos para diversos cargos</h3><div class="badges"><span class="badge live">• AO VIVO</span><span class="badge">PCI</span><span class="badge">2026-08-30</span></div></a>
-<a class="card" href="https://www.pciconcursos.com.br/noticias/inova-oz-sp-abre-concurso-publico-com-salarios-de-ate-5435" target="_blank" data-title="inova oz - sp abre concurso público com salários de até r$ 5.435,64"><h3>INOVA OZ - SP abre concurso público com salários de até R$ 5.435,64</h3><div class="badges"><span class="badge live">• AO VIVO</span><span class="badge">PCI</span><span class="badge">2026-08-30</span></div></a>
-<a class="card" href="https://www.pciconcursos.com.br/noticias/autarquia-municipal-de-saude-de-itapecerica-da-serra-sp-abre-concurso-publico-com-salarios-de-ate-11576" target="_blank" data-title="autarquia municipal de saúde de itapecerica da serra - sp abre concurso público com salários de até r$ 11.576,25"><h3>Autarquia Municipal de Saúde de Itapecerica da Serra - SP abre concurso público com salários de até R$ 11.576,25</h3><div class="badges"><span class="badge live">• AO VIVO</span><span class="badge">PCI</span><span class="badge">2026-08-30</span></div></a>
-<a class="card" href="https://www.pciconcursos.com.br/noticias/prefeitura-de-ilhabela-sp-retifica-edital-de-concurso-publico-com-remuneracoes-de-ate-12579" target="_blank" data-title="prefeitura de ilhabela - sp retifica edital de concurso público com remunerações de até r$ 12.579,96"><h3>Prefeitura de Ilhabela - SP retifica edital de concurso público com remunerações de até R$ 12.579,96</h3><div class="badges"><span class="badge live">• AO VIVO</span><span class="badge">PCI</span><span class="badge">2026-08-30</span></div></a>
-<a class="card" href="https://www.pciconcursos.com.br/noticias/prefeitura-de-limeira-sp-publica-editais-de-concursos-com-vagas-em-diversas-areas" target="_blank" data-title="prefeitura de limeira - sp publica editais de concursos com vagas em diversas áreas"><h3>Prefeitura de Limeira - SP publica editais de concursos com vagas em diversas áreas</h3><div class="badges"><span class="badge live">• AO VIVO</span><span class="badge">PCI</span><span class="badge">2026-08-30</span></div></a>
-<a class="card" href="https://www.pciconcursos.com.br/noticias/prefeitura-de-guapimirim-rj-abre-concurso-publico-com-vagas-para-professores" target="_blank" data-title="prefeitura de guapimirim - rj abre concurso público com vagas para professores"><h3>Prefeitura de Guapimirim - RJ abre concurso público com vagas para professores</h3><div class="badges"><span class="badge live">• AO VIVO</span><span class="badge">PCI</span><span class="badge">2026-08-30</span></div></a>
+
+<div class="controls">
+<input id="busca" placeholder="Buscar por prefeitura, filosofia, Belém, ANPOF..." oninput="filtrar()">
+<select id="filtroArea" onchange="filtrar()">
+<option value="">Todas áreas</option>
+<option value="filosofia">Filosofia</option>
+<option value="sociais">Ciências Sociais</option>
+<option value="belem">Belém / RMB</option>
+</select>
+<select id="ordenar" onchange="filtrar()">
+<option value="recente">Mais recente</option>
+<option value="antigo">Mais antigo</option>
+<option value="az">A-Z</option>
+</select>
 </div>
-<div id="grid-ifch" class="grid section">
-<a class="card ifch-card" href="https://www.ifch.ufpa.br/index.php/ultimas-noticias/824-pphist-pos-graduacao-em-historia-lanca-edital-para-turma-2027" target="_blank" data-title="pphist - pós-graduação em história lança edital para turma 2027"><h3>PPHIST - Pós-graduação em História lança Edital para turma 2027</h3><div class="badges"><span class="badge ifch">• IFCH UFPA</span><span class="badge">2026-08-30</span></div></a>
+
+<div id="contador"></div>
+<div id="lista"></div>
+<div class="pager">
+<button id="prevBtn" onclick="pagina--,render()">Anterior</button>
+<span id="pagInfo" style="padding:8px 12px;color:var(--muted)"></span>
+<button id="nextBtn" onclick="pagina++,render()">Proxima</button>
 </div>
-<div id="grid-all" class="grid section"></div>
-<footer>radar-ifch v3 - separacao concursos | ifch ufpa - 2026</footer>
+
 <script>
-const q=document.getElementById('q');
-const tabs=document.querySelectorAll('.tab');
-const sections={conc:document.getElementById('grid-conc'),ifch:document.getElementById('grid-ifch'),all:document.getElementById('grid-all')};
-const all=[...document.querySelectorAll('#grid-conc.card'),...document.querySelectorAll('#grid-ifch.card')];
-const gridAll=document.getElementById('grid-all');
-all.forEach(c=>{gridAll.appendChild(c.cloneNode(true))});
-function filter(t){t=t.toLowerCase();document.querySelectorAll('.card').forEach(c=>{c.style.display=(c.dataset.title||'').includes(t)?'flex':'none'})}
-q.addEventListener('input',e=>filter(e.target.value));
-tabs.forEach(tab=>{tab.addEventListener('click',()=>{tabs.forEach(x=>x.classList.remove('active'));tab.classList.add('active');Object.values(sections).forEach(s=>s.classList.remove('active'));sections[tab.dataset.t].classList.add('active');filter(q.value)})});
-</script></body></html>
+let BANCO_CONCURSOS=[];
+let BANCO_PALESTRAS=[];
+let categoria='concursos';
+let filtrados=[];
+let pagina=1;
+const POR_PAGINA=20;
+
+async function carregar(){
+  try{
+    const r1=await fetch('arquivo/todos_concursos.json?'+Date.now());
+    BANCO_CONCURSOS=await r1.json();
+  }catch(e){BANCO_CONCURSOS=[]}
+  try{
+    const r2=await fetch('arquivo/todos_palestras.json?'+Date.now());
+    BANCO_PALESTRAS=await r2.json();
+  }catch(e){BANCO_PALESTRAS=[]}
+
+  document.getElementById('count-concursos').textContent=BANCO_CONCURSOS.length;
+  document.getElementById('count-presenciais').textContent=BANCO_PALESTRAS.filter(p=>p.categoria==='presenciais').length;
+  document.getElementById('count-online').textContent=BANCO_PALESTRAS.filter(p=>p.categoria==='online').length;
+  document.getElementById('count-minicursos').textContent=BANCO_PALESTRAS.filter(p=>p.categoria==='minicursos').length;
+  document.getElementById('totalBanco').textContent=BANCO_CONCURSOS.length+BANCO_PALESTRAS.length;
+  filtrar();
+}
+function setCat(cat){
+  categoria=cat;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelector('[data-cat="'+cat+'"]').classList.add('active');
+  pagina=1;
+  filtrar();
+}
+function filtrar(){
+  const q=document.getElementById('busca').value.toLowerCase();
+  const area=document.getElementById('filtroArea').value.toLowerCase();
+  const ordem=document.getElementById('ordenar').value;
+  let base=[];
+  if(categoria==='concursos') base=BANCO_CONCURSOS;
+  else base=BANCO_PALESTRAS.filter(p=>p.categoria===categoria);
+  filtrados=base.filter(it=>{
+    const txt=(it.titulo||it.title||JSON.stringify(it)).toLowerCase();
+    if(q && !txt.includes(q)) return false;
+    if(area && !( (it.area||'').toLowerCase().includes(area) || txt.includes(area) )) return false;
+    return true;
+  });
+  if(ordem==='az') filtrados.sort((a,b)=>(a.titulo||a.title||'').localeCompare(b.titulo||b.title||''));
+  else if(ordem==='antigo') filtrados.sort((a,b)=>(a.data||'').localeCompare(b.data||''));
+  else filtrados.sort((a,b)=>(b.data||'').localeCompare(a.data||''));
+  pagina=1;
+  render();
+}
+function render(){
+  const totalPag=Math.max(1, Math.ceil(filtrados.length/POR_PAGINA));
+  if(pagina<1) pagina=1;
+  if(pagina>totalPag) pagina=totalPag;
+  const ini=(pagina-1)*POR_PAGINA;
+  const slice=filtrados.slice(ini, ini+POR_PAGINA);
+  const lista=document.getElementById('lista');
+  lista.innerHTML='';
+  document.getElementById('contador').textContent='Mostrando '+slice.length+' de '+filtrados.length+' | Pagina '+pagina+'/'+totalPag;
+  document.getElementById('pagInfo').textContent=pagina+'/'+totalPag;
+  document.getElementById('prevBtn').disabled=pagina<=1;
+  document.getElementById('nextBtn').disabled=pagina>=totalPag;
+  if(slice.length===0){
+    lista.innerHTML='<div class="card" style="color:var(--muted)">Nenhum resultado. Limpe a busca.</div>';
+    return;
+  }
+  for(const it of slice){
+    const titulo=it.titulo||it.title||'Sem titulo';
+    const url=it.link||it.url||'#';
+    const data=it.data||it.data_coleta||'';
+    const origem=it.origem||it.fonte||'';
+    const area=it.area||'';
+    const cat=it.categoria||'concurso';
+    const el=document.createElement('div');
+    el.className='card';
+    el.innerHTML='<span class="badge">'+cat.toUpperCase()+'</span>'+(area?'<span class="badge">'+area+'</span>':'')+'<a href="'+url+'" target="_blank" rel="noopener">'+titulo+'</a><div class="meta">'+data+' • '+origem.slice(-60)+'</div>';
+    lista.appendChild(el);
+  }
+}
+carregar();
+</script>
+</body>
+</html>

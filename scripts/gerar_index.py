@@ -1,127 +1,222 @@
-import pathlib, datetime
 
-ROOT = pathlib.Path(".")
-ARQ_DIR = ROOT / "arquivo"
-TODAY = datetime.date.today().isoformat()
+import os, json, glob, re
+from datetime import datetime
 
-def get_last_files():
-    concursos_lines = []
-    ifch_lines = []
-    if ARQ_DIR.exists():
-        for p in sorted(ARQ_DIR.glob("*"), reverse=True):
-            if (p/"concursos.txt").exists():
-                concursos_lines = (p/"concursos.txt").read_text(encoding="utf-8", errors="ignore").splitlines()
-                if (p/"ifch.txt").exists():
-                    ifch_lines = (p/"ifch.txt").read_text(encoding="utf-8", errors="ignore").splitlines()
-                break
-    return concursos_lines, ifch_lines
+BLOCK_T = ["outros concursos","outras apostilas","comprar - apostila digital","...continuar lendo","/apostilas/","/pedido/compra","https://www.pciconcursos.com.br/br/concursos/"]
 
-conc_raw, ifch_raw = get_last_files()
+def limpar_concursos_de_arquivo(path):
+    limpos=[]
+    try:
+        with open(path, encoding="utf-8", errors="ignore") as f:
+            linhas=f.readlines()
+        i=0
+        while i < len(linhas):
+            linha=linhas[i].strip()
+            if not linha:
+                i+=1
+                continue
+            low=linha.lower()
+            if any(b in low for b in BLOCK_T):
+                i+=1
+                continue
+            if "prefeitura" in low and ("concurso" in low or "edital" in low or "retifica" in low):
+                link=""
+                if i+1 < len(linhas) and "http" in linhas[i+1]:
+                    link=linhas[i+1].strip()
+                    i+=1
+                if len(linha)>20:
+                    m=re.search(r"(\d{4}-\d{2}-\d{2})", path)
+                    data=m.group(1) if m else ""
+                    limpos.append({"titulo":linha,"link":link,"data":data,"origem":path})
+            i+=1
+    except Exception as e:
+        print(f"skip {path}: {e}")
+    return limpos
 
-def parse_lines(lines):
-    out=[]
-    for line in lines:
-        if "|" not in line: continue
-        parts=line.split("|",1)
-        title=parts[0].strip()
-        url=parts[1].strip()
-        if len(title)<15: continue
-        out.append((title,url))
-    return out
+todos=[]
+for fp in sorted(glob.glob("arquivo/**/concursos.txt", recursive=True)):
+    todos.extend(limpar_concursos_de_arquivo(fp))
 
-conc_parsed = parse_lines(conc_raw)
-ifch_parsed = parse_lines(ifch_raw)
+vistos={}
+for c in sorted(todos, key=lambda x: x.get("data",""), reverse=True):
+    if c["titulo"] not in vistos:
+        vistos[c["titulo"]]=c
+todos=list(vistos.values())
 
-BLOCK_T = ["comprar","apostila","outras apostilas","outros concursos","...continuar lendo","organizadoras","centro-oeste","página inicial"]
-BLOCK_U = ["apostilas","/pedido/compra","/provas/","/organizadoras"]
+os.makedirs("arquivo", exist_ok=True)
+with open("arquivo/todos_concursos.json","w",encoding="utf-8") as f:
+    json.dump(todos, f, ensure_ascii=False, indent=2)
 
-def valid_conc(title, url):
-    t=title.lower(); u=url.lower()
-    if any(b in t for b in BLOCK_T): return False
-    if any(b in u for b in BLOCK_U): return False
-    if u.endswith("pciconcursos.com.br/") or u.endswith("/concursos/"): return False
-    if "/noticias/" not in u and "concurso" not in t and "seletivo" not in t and "edital" not in t:
-        return False
-    return True
+todos_p=[]
+for cat in ["presenciais","online","minicursos"]:
+    for fp in glob.glob(f"arquivo/**/{cat}.json", recursive=True):
+        try:
+            with open(fp,encoding="utf-8") as jf:
+                dados=json.load(jf)
+                for it in dados:
+                    it["categoria"]=cat
+                    todos_p.append(it)
+        except:
+            pass
 
-conc_filtered=[]; seen=set()
-for title,url in conc_parsed:
-    if valid_conc(title,url) and url not in seen:
-        seen.add(url); conc_filtered.append((title,url))
+with open("arquivo/todos_palestras.json","w",encoding="utf-8") as f:
+    json.dump(todos_p, f, ensure_ascii=False, indent=2)
 
-ifch_filtered=[]; seen=set()
-for title,url in ifch_parsed:
-    if url not in seen and len(title)>5:
-        seen.add(url); ifch_filtered.append((title,url))
+print(f"BANCO: {len(todos)} concursos unicos, {len(todos_p)} palestras")
 
-if not conc_filtered:
-    conc_filtered=[("Ver todos concursos - PCI","https://www.pciconcursos.com.br/concursos/")]
-if not ifch_filtered:
-    ifch_filtered=[("Nenhum edital IFCH hoje","https://www.ifch.ufpa.br/")]
+hoje=datetime.now().strftime("%Y-%m-%d")
 
-date_str=datetime.datetime.now().strftime("%d/%m/%Y %H:%M")
-
-cards_conc=""
-for title,url in conc_filtered:
-    cards_conc+=f'<a class="card" href="{url}" target="_blank" data-title="{title.lower()}"><h3>{title}</h3><div class="badges"><span class="badge live">• AO VIVO</span><span class="badge">PCI</span><span class="badge">{TODAY}</span></div></a>\n'
-
-cards_ifch=""
-for title,url in ifch_filtered:
-    cards_ifch+=f'<a class="card ifch-card" href="{url}" target="_blank" data-title="{title.lower()}"><h3>{title}</h3><div class="badges"><span class="badge ifch">• IFCH UFPA</span><span class="badge">{TODAY}</span></div></a>\n'
-
-html="""<!doctype html><html lang="pt-br"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RADAR IFCH v3</title>
+html_parts = []
+html_parts.append("""<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar IFCH v5 - Banco Dinamico</title>
 <style>
-:root{--bg:#070709;--card:#121214;--card2:#19191c;--border:#26262a;--text:#e8e8ea;--muted:#8a8a93;--accent:#a855f7;--green:#10b981}
-*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
-header{position:sticky;top:0;z-index:50;background:rgba(7,7,9,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 20px}
-.top{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-h1{font-size:20px}h1 b{color:var(--accent)}
-.meta{font-family:monospace;font-size:11px;color:var(--muted);background:var(--card);border:1px solid var(--border);padding:6px 10px;border-radius:999px}
-.tabs{max-width:1100px;margin:18px auto 0;padding:0 20px;display:flex;gap:8px}
-.tab{padding:10px 16px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--muted);cursor:pointer;font-size:13px;font-weight:700}
-.tab.active{background:#fff;color:#000}
-.search-wrap{max-width:1100px;margin:12px auto;padding:0 20px}
-#q{width:100%;background:var(--card);border:1px solid var(--border);color:var(--text);padding:14px;border-radius:12px;outline:none}
-.grid{max-width:1100px;margin:0 auto;padding:18px 20px 80px;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit}
-.card:hover{transform:translateY(-2px);background:var(--card2)}
-.card.ifch-card{border-color:#2d2040}
-.card h3{font-size:14px;line-height:1.35}
-.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
-.badge{font-size:10px;padding:4px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted);font-family:monospace}
-.badge.live{background:rgba(16,185,129,.15);color:var(--green);border-color:rgba(16,185,129,.3)}
-.badge.ifch{background:rgba(168,85,247,.15);color:#a855f7;border-color:rgba(168,85,247,.3)}
-.section{display:none}.section.active{display:grid}
-footer{border-top:1px solid var(--border);padding:18px;text-align:center;color:var(--muted);font-family:monospace;font-size:10px}
-</style></head><body>
-<header><div class="top"><h1>RADAR <b>IFCH</b> <small style="color:var(--muted);font-size:12px">/ v3 abas</small></h1><div class="meta">"""+f"{len(conc_filtered)} concursos • {len(ifch_filtered)} IFCH • {date_str}"+"""</div></div></header>
-<div class="tabs">
-<button class="tab active" data-t="conc">CONCURSOS PUBLICOS <span>"""+str(len(conc_filtered))+"""</span></button>
-<button class="tab" data-t="ifch">IFCH / UFPA <span>"""+str(len(ifch_filtered))+"""</span></button>
-<button class="tab" data-t="all">TUDO</button>
-</div>
-<div class="search-wrap"><input id="q" placeholder="filtrar: professor, Limeira, PPHIST, edital..."></div>
-<div id="grid-conc" class="grid section active">
-"""+cards_conc+"""</div>
-<div id="grid-ifch" class="grid section">
-"""+cards_ifch+"""</div>
-<div id="grid-all" class="grid section"></div>
-<footer>radar-ifch v3 - separacao concursos | ifch ufpa - 2026</footer>
-<script>
-const q=document.getElementById('q');
-const tabs=document.querySelectorAll('.tab');
-const sections={conc:document.getElementById('grid-conc'),ifch:document.getElementById('grid-ifch'),all:document.getElementById('grid-all')};
-const all=[...document.querySelectorAll('#grid-conc.card'),...document.querySelectorAll('#grid-ifch.card')];
-const gridAll=document.getElementById('grid-all');
-all.forEach(c=>{gridAll.appendChild(c.cloneNode(true))});
-function filter(t){t=t.toLowerCase();document.querySelectorAll('.card').forEach(c=>{c.style.display=(c.dataset.title||'').includes(t)?'flex':'none'})}
-q.addEventListener('input',e=>filter(e.target.value));
-tabs.forEach(tab=>{tab.addEventListener('click',()=>{tabs.forEach(x=>x.classList.remove('active'));tab.classList.add('active');Object.values(sections).forEach(s=>s.classList.remove('active'));sections[tab.dataset.t].classList.add('active');filter(q.value)})});
-</script></body></html>
-"""
+:root{--bg:#0a0a0a;--card:#141414;--border:#222;--text:#e5e5e5;--muted:#888;--accent:#8ab4ff}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);margin:0;padding:20px}
+header{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:16px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{padding:10px 16px;background:#1a1a1a;border:1px solid var(--border);border-radius:999px;cursor:pointer;font-size:14px}
+.tab.active{background:#fff;color:#000;font-weight:700}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+input,select{background:#111;border:1px solid var(--border);color:var(--text);padding:10px 12px;border-radius:8px}
+#busca{min-width:260px;flex:1}
+.card{background:var(--card);border:1px solid var(--border);padding:14px;border-radius:12px;margin-bottom:10px;line-height:1.4}
+.card a{color:var(--accent);text-decoration:none;font-weight:600}
+.card a:hover{text-decoration:underline}
+.badge{font-size:11px;padding:3px 8px;border-radius:20px;background:#222;margin-right:6px;display:inline-block}
+.meta{color:var(--muted);font-size:12px;margin-top:6px}
+.pager{display:flex;gap:8px;justify-content:center;margin:20px 0}
+.pager button{padding:8px 14px;background:#1a1a1a;border:1px solid var(--border);color:var(--text);border-radius:8px;cursor:pointer}
+.pager button:disabled{opacity:0.3}
+#contador{color:var(--muted);font-size:13px;margin:8px 0}
+</style>
+</head>
+<body>
+<header>
+<h2 style="margin:0">RADAR IFCH v5 - """ + hoje + """</h2>
+<div style="color:var(--muted);font-size:13px">BANCO: <span id="totalBanco">carregando...</span> itens | <a href="arquivo/todos_concursos.json" style="color:var(--accent)">ver JSON bruto</a></div>
+</header>
 
-path=pathlib.Path("index.html")
-path.write_text(html,encoding="utf-8")
-print(f"OK {len(conc_filtered)} conc + {len(ifch_filtered)} ifch -> {path} {len(html)//1024}K")
+<div class="tabs">
+<div class="tab active" data-cat="concursos" onclick="setCat('concursos')">CONCURSOS (<span id="count-concursos">0</span>)</div>
+<div class="tab" data-cat="presenciais" onclick="setCat('presenciais')">PRESENCIAIS RMB (<span id="count-presenciais">0</span>)</div>
+<div class="tab" data-cat="online" onclick="setCat('online')">ONLINE BRASIL (<span id="count-online">0</span>)</div>
+<div class="tab" data-cat="minicursos" onclick="setCat('minicursos')">MINICURSOS (<span id="count-minicursos">0</span>)</div>
+</div>
+
+<div class="controls">
+<input id="busca" placeholder="Buscar por prefeitura, filosofia, Belém, ANPOF..." oninput="filtrar()">
+<select id="filtroArea" onchange="filtrar()">
+<option value="">Todas áreas</option>
+<option value="filosofia">Filosofia</option>
+<option value="sociais">Ciências Sociais</option>
+<option value="belem">Belém / RMB</option>
+</select>
+<select id="ordenar" onchange="filtrar()">
+<option value="recente">Mais recente</option>
+<option value="antigo">Mais antigo</option>
+<option value="az">A-Z</option>
+</select>
+</div>
+
+<div id="contador"></div>
+<div id="lista"></div>
+<div class="pager">
+<button id="prevBtn" onclick="pagina--,render()">Anterior</button>
+<span id="pagInfo" style="padding:8px 12px;color:var(--muted)"></span>
+<button id="nextBtn" onclick="pagina++,render()">Proxima</button>
+</div>
+
+<script>
+let BANCO_CONCURSOS=[];
+let BANCO_PALESTRAS=[];
+let categoria='concursos';
+let filtrados=[];
+let pagina=1;
+const POR_PAGINA=20;
+
+async function carregar(){
+  try{
+    const r1=await fetch('arquivo/todos_concursos.json?'+Date.now());
+    BANCO_CONCURSOS=await r1.json();
+  }catch(e){BANCO_CONCURSOS=[]}
+  try{
+    const r2=await fetch('arquivo/todos_palestras.json?'+Date.now());
+    BANCO_PALESTRAS=await r2.json();
+  }catch(e){BANCO_PALESTRAS=[]}
+
+  document.getElementById('count-concursos').textContent=BANCO_CONCURSOS.length;
+  document.getElementById('count-presenciais').textContent=BANCO_PALESTRAS.filter(p=>p.categoria==='presenciais').length;
+  document.getElementById('count-online').textContent=BANCO_PALESTRAS.filter(p=>p.categoria==='online').length;
+  document.getElementById('count-minicursos').textContent=BANCO_PALESTRAS.filter(p=>p.categoria==='minicursos').length;
+  document.getElementById('totalBanco').textContent=BANCO_CONCURSOS.length+BANCO_PALESTRAS.length;
+  filtrar();
+}
+function setCat(cat){
+  categoria=cat;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelector('[data-cat="'+cat+'"]').classList.add('active');
+  pagina=1;
+  filtrar();
+}
+function filtrar(){
+  const q=document.getElementById('busca').value.toLowerCase();
+  const area=document.getElementById('filtroArea').value.toLowerCase();
+  const ordem=document.getElementById('ordenar').value;
+  let base=[];
+  if(categoria==='concursos') base=BANCO_CONCURSOS;
+  else base=BANCO_PALESTRAS.filter(p=>p.categoria===categoria);
+  filtrados=base.filter(it=>{
+    const txt=(it.titulo||it.title||JSON.stringify(it)).toLowerCase();
+    if(q && !txt.includes(q)) return false;
+    if(area && !( (it.area||'').toLowerCase().includes(area) || txt.includes(area) )) return false;
+    return true;
+  });
+  if(ordem==='az') filtrados.sort((a,b)=>(a.titulo||a.title||'').localeCompare(b.titulo||b.title||''));
+  else if(ordem==='antigo') filtrados.sort((a,b)=>(a.data||'').localeCompare(b.data||''));
+  else filtrados.sort((a,b)=>(b.data||'').localeCompare(a.data||''));
+  pagina=1;
+  render();
+}
+function render(){
+  const totalPag=Math.max(1, Math.ceil(filtrados.length/POR_PAGINA));
+  if(pagina<1) pagina=1;
+  if(pagina>totalPag) pagina=totalPag;
+  const ini=(pagina-1)*POR_PAGINA;
+  const slice=filtrados.slice(ini, ini+POR_PAGINA);
+  const lista=document.getElementById('lista');
+  lista.innerHTML='';
+  document.getElementById('contador').textContent='Mostrando '+slice.length+' de '+filtrados.length+' | Pagina '+pagina+'/'+totalPag;
+  document.getElementById('pagInfo').textContent=pagina+'/'+totalPag;
+  document.getElementById('prevBtn').disabled=pagina<=1;
+  document.getElementById('nextBtn').disabled=pagina>=totalPag;
+  if(slice.length===0){
+    lista.innerHTML='<div class="card" style="color:var(--muted)">Nenhum resultado. Limpe a busca.</div>';
+    return;
+  }
+  for(const it of slice){
+    const titulo=it.titulo||it.title||'Sem titulo';
+    const url=it.link||it.url||'#';
+    const data=it.data||it.data_coleta||'';
+    const origem=it.origem||it.fonte||'';
+    const area=it.area||'';
+    const cat=it.categoria||'concurso';
+    const el=document.createElement('div');
+    el.className='card';
+    el.innerHTML='<span class="badge">'+cat.toUpperCase()+'</span>'+(area?'<span class="badge">'+area+'</span>':'')+'<a href="'+url+'" target="_blank" rel="noopener">'+titulo+'</a><div class="meta">'+data+' • '+origem.slice(-60)+'</div>';
+    lista.appendChild(el);
+  }
+}
+carregar();
+</script>
+</body>
+</html>
+""")
+
+with open("index.html","w",encoding="utf-8") as out:
+    out.write("".join(html_parts))
+
+print(f"index.html v5 DINAMICO gerado - {len(todos)} concursos")
