@@ -1,5 +1,4 @@
-
-name: Radar Diario
+name: Radar Diario V6.2 PA-Filo
 on:
   schedule:
     - cron: '0 10 * * *'
@@ -19,12 +18,15 @@ jobs:
       - run: |
           TODAY=$(date +%F)
           mkdir -p arquivo/$TODAY
-          python radar-ifch/radar_ifch.py
-          python radar-concursos/radar_final.py
+          python radar-concursos/radar_multifonte_v6.py || true
+          python radar-ifch/radar_ifch.py || true
           python scripts/gerar_index.py
+          echo "=== BANCO V6.2 ==="
+          cat arquivo/todos_concursos.json | head -20
+          cat arquivo/$TODAY/concursos.txt | wc -l
       - run: |
           git config user.name "radar-bot"
           git config user.email "radar@frajola.system"
-          git add arquivo/ index.html || true
-          git diff --staged --quiet || git commit -m "coleta $(date +%F-%H%M)"
+          git add arquivo/ index.html radar-concursos/ || true
+          git diff --staged --quiet || git commit -m "V6.2 auto coleta $(date +%F-%H%M) PA filtrado"
           git push
