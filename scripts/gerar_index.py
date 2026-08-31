@@ -1,51 +1,57 @@
-import json, pathlib, datetime
-HOJE=datetime.date.today().isoformat()
-base=pathlib.Path("arquivo")
+import json, os, glob
+from datetime import datetime
 
-def load_txt(p):
-    if not p.exists(): return []
-    return [l.strip() for l in p.read_text(encoding="utf-8", errors="ignore").splitlines() if "|" in l and "http" in l]
+TODAY = datetime.now().strftime("%Y-%m-%d")
 
-concursos = load_txt(base/HOJE/"concursos.txt")
-ifch = load_txt(base/HOJE/"ifch.txt")
-palestras = load_txt(base/HOJE/"palestras.txt")
+def load_txts(pattern):
+    files = glob.glob(pattern)
+    items=[]
+    for fp in files:
+        try:
+            with open(fp, encoding="utf-8", errors="ignore") as f:
+                for line in f:
+                    if "|" in line:
+                        tit, link = line.split("|",1)
+                        items.append({"titulo": tit.strip()[:200], "link": link.strip()})
+        except: pass
+    return items
 
-# fallback IFCH pega ultimo valido
-if not ifch:
-    for d in sorted(base.glob("2026-*/ifch.txt"), reverse=True):
-        txt = d.read_text(encoding="utf-8", errors="ignore")
-        if len(txt)>50:
-            ifch = [l for l in txt.splitlines() if "|" in l]
-            break
+# Concursos PA V6.2
+concursos = []
+try:
+    with open("arquivo/todos_concursos.json", encoding="utf-8") as f:
+        concursos = json.load(f)
+except:
+    concursos = load_txts(f"arquivo/{TODAY}/concursos.txt")
 
-def to_json(linhas):
-    out=[]
-    for l in linhas:
-        if "|" not in l: continue
-        # remove lixo IFCH Filosofia e Humanas sem ser edital
-        if l.strip() == "[UFPA] IFCH Filosofia e Humanas | http://ifch.ufpa.br/index.php": continue
-        if "CPPD Comissão Docente | http://cppd.ufpa.br/" in l: continue
-        parts=l.split("|")
-        if len(parts)<2: continue
-        titulo="|".join(parts[:-1]).strip()
-        link=parts[-1].strip()
-        if len(titulo)<15: continue
-        if not link.startswith("http"): continue
-        out.append({"titulo":titulo[:220], "link":link})
-    # dedup link
-    seen=set(); uniq=[]
-    for o in out:
-        if o["link"] not in seen:
-            seen.add(o["link"]); uniq.append(o)
-    return uniq
+# IFCH
+ifch=[]
+try:
+    with open("arquivo/todos_ifch.json", encoding="utf-8") as f:
+        ifch = json.load(f)
+except:
+    ifch = load_txts(f"arquivo/{TODAY}/ifch.txt")
 
-jc=to_json(concursos)
-ji=to_json(ifch)
-jp=to_json(palestras)
+# Palestras V6.3
+palestras=[]
+try:
+    with open("arquivo/todos_palestras.json", encoding="utf-8") as f:
+        palestras = json.load(f)
+except:
+    palestras = load_txts(f"arquivo/{TODAY}/palestras.txt")
 
-base.mkdir(exist_ok=True)
-(base/"todos_concursos.json").write_text(json.dumps(jc, ensure_ascii=False, indent=2), encoding="utf-8")
-(base/"todos_ifch.json").write_text(json.dumps(ji, ensure_ascii=False, indent=2), encoding="utf-8")
-(base/"todos_palestras.json").write_text(json.dumps(jp, ensure_ascii=False, indent=2), encoding="utf-8")
+# Dedup concursos por link
+uniq={}
+for c in concursos:
+    uniq[c["link"]] = c
+concursos = list(uniq.values())
 
-print(f"BANCO V6.2 LIMPO: {len(jc)} concursos PA, {len(ji)} IFCH, {len(jp)} palestras")
+os.makedirs("arquivo", exist_ok=True)
+with open("arquivo/todos_concursos.json","w",encoding="utf-8") as f:
+    json.dump(concursos,f,ensure_ascii=False,indent=2)
+with open("arquivo/todos_ifch.json","w",encoding="utf-8") as f:
+    json.dump(ifch,f,ensure_ascii=False,indent=2)
+with open("arquivo/todos_palestras.json","w",encoding="utf-8") as f:
+    json.dump(palestras,f,ensure_ascii=False,indent=2)
+
+print(f"INDEX V6.3: {len(concursos)} PA + {len(ifch)} IFCH + {len(palestras)} Palestras")
