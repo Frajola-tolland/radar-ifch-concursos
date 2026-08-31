@@ -42,7 +42,7 @@ print(f"V6.2 ativos: {len(historico)}")
 def add(titulo, link, fonte, tipo):
     if len(titulo.strip()) < 15: return
     low = titulo.lower()
-    if any(x in low for x in ["portal da ufpa","gestores do ifch"]): return
+    if any(x in low for x in ["portal da ufpa","gestores do ifch","universidade federal do pará instituto","instituto de filosofia e ciencias humanas"]): return
     if "/component/banners/click" in link: return
     ini,fim,exp = extrair_datas_evento(titulo+" "+link)
     palestras.append({"titulo":titulo[:180],"link":link,"fonte":fonte,"tipo":tipo,"inicio":ini,"fim":fim,"expira":exp})
