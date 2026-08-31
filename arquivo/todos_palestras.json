@@ -3,6 +3,18 @@
     "titulo": "[EREFIL NORTE] I Encontro Regional de Estudantes de Filosofia do Norte - 14 a 18 Set 2026 - IFCH/UFPA (submissao ate 07/ago)",
     "link": "https://ufpa.br/encontro-regional-de-estudantes-de-filosofia-sera-realizado-em-setembro-em-belem/",
     "fonte": "IFCH",
-    "tipo": "presencial_rmb"
+    "tipo": "presencial_rmb",
+    "inicio": "2026-09-14",
+    "fim": "2026-09-18",
+    "expira": "2026-09-19"
+  },
+  {
+    "titulo": "Universidade Federal do Pará Instituto de Filosofia e Ciências Humanas",
+    "link": "https://www.ifch.ufpa.br/",
+    "fonte": "IFCH",
+    "tipo": "presencial_rmb",
+    "inicio": "2026-08-31",
+    "fim": "2026-09-30",
+    "expira": "2026-10-01"
   }
 ]
