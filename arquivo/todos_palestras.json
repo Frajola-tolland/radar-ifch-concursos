@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "titulo": "[IFCH] Universidade Federal do Pará Instituto de Filosofia e Ciências Humanas",
+    "link": "https://www.ifch.ufpa.br/",
+    "fonte": "IFCH",
+    "tipo": "presencial_rmb"
+  },
+  {
+    "titulo": "[IFCH] Encontro Regional de Estudantes de Filosofia ocorrerá em Belém no mês de setembro",
+    "link": "https://www.ifch.ufpa.br/index.php/component/banners/click/689",
+    "fonte": "IFCH",
+    "tipo": "presencial_rmb"
+  }
+]
