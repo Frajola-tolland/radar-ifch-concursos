@@ -1,4 +1,4 @@
-name: Radar Diario V6.3.2 PA-TOTAL
+name: Radar Diario V6.3.4 PA-TOTAL-FIXLINK
 on:
   schedule:
     - cron: '0 */1 * * *'
@@ -20,14 +20,11 @@ jobs:
           python radar-concursos/radar_multifonte_v6.py || true
           python radar-ifch/radar_ifch.py || true
           python radar-palestras/radar_palestras_v63.py || true
+          python scripts/valida_links.py || true
           python scripts/gerar_index.py
-          echo "=== BANCO V6.3.2 ==="
-          cat arquivo/todos_concursos.json
-          cat arquivo/todos_ifch.json | wc -l
-          cat arquivo/todos_palestras.json
       - run: |
           git config user.name "radar-bot"
           git config user.email "radar@frajola.system"
           git add arquivo/ index.html
-          git diff --staged --quiet || git commit -m "V6.3.2 auto $(date +%F-%H%M) PA-TOTAL inclui SEDUC 2000"
+          git diff --staged --quiet || git commit -m "V6.3.4 auto $(date +%F-%H%M) PA-TOTAL link check"
           git push
