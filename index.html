@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Radar IFCH V6.3.1 - PA + Filosofia - 2026-08-31</title>
+<title>Radar IFCH V6.3.1 - PA + Filosofia - 2026-09-01</title>
 <style>
 body{font-family:Inter,Arial;max-width:1000px;margin:auto;padding:20px;background:#f8fafc}
 h1{font-size:20px}
@@ -16,7 +16,7 @@ a{color:#2563eb;word-break:break-all}
 .meta{font-size:11px;color:#6b7280;margin-top:6px}
 </style></head><body>
 <div class="header">
-<h1 id="titulo">Radar IFCH V6.3.1 - 2026-08-31 - BANCO: carregando...</h1>
+<h1 id="titulo">Radar IFCH V6.3.1 - 2026-09-01 - BANCO: carregando...</h1>
 <p style="color:#666;font-size:13px">Filtro: Presencial = RMB Belem + Online = Brasil Filosofia/Ciencias Humanas | Fonte: PCI_PA + UFPA | Protocolo: acumula até expira (fim+1 dia) depois remove automático</p>
 <input id="search" type="text" placeholder="🔍 Pesquisar em todos os radares... (ex: filosofia, Abaetetuba, EREF, edital)" oninput="doSearch(this.value)">
 <div class="tabs">
@@ -44,7 +44,7 @@ function render(){
  document.getElementById('c-pa').textContent=pa.length;
  document.getElementById('c-ifch').textContent=ifch.length;
  document.getElementById('c-pal').textContent=pal.length;
- document.getElementById('titulo').textContent='Radar IFCH V6.3.1 - 2026-08-31 - BANCO: '+(DB.pa.length+DB.ifch.length+DB.pal.length)+' | '+DB.pa.length+' PA + '+DB.ifch.length+' IFCH + '+DB.pal.length+' palestras - ativos até expira';
+ document.getElementById('titulo').textContent='Radar IFCH V6.3.1 - 2026-09-01 - BANCO: '+(DB.pa.length+DB.ifch.length+DB.pal.length)+' | '+DB.pa.length+' PA + '+DB.ifch.length+' IFCH + '+DB.pal.length+' palestras - ativos até expira';
  document.getElementById('list-pa').innerHTML=pa.map(c=>card(c,'badge-pa',c.titulo.split(']')[0].replace('[',''))).join('') || '<div class=card>Nenhum concurso PA</div>';
  document.getElementById('list-ifch').innerHTML=ifch.map(c=>card(c,'badge-ifch','IFCH')).join('') || '<div class=card>Nenhum IFCH</div>';
  document.getElementById('list-pal').innerHTML=pal.map(c=>card(c,'badge-pal','PALESTRA')).join('') || '<div class=card>Nenhuma palestra</div>';
