@@ -7,7 +7,7 @@
     "fim": "2026-11-29"
   },
   {
-    "titulo": "[SEDUC PA] Edital SEDUC PA 2026 - 2.000 vagas publicado 31/08 - FGV banca - Diario Oficial 36.749",
+    "titulo": "[SEDUC PA] Edital SEDUC PA 2026 2.000 vagas FGV Diario 36.749",
     "link": "https://www.seduc.pa.gov.br/",
     "fonte": "SEDUC_PA_OFICIAL",
     "tipo": "concurso_pa",
@@ -16,12 +16,21 @@
     "expira": "2026-10-03"
   },
   {
-    "titulo": "[SEDUC PA] Concurso SEDUC PA 2026 - 2.000 vagas Professor/Analista - inscricoes 31/08 a 01/10 - Estrategia",
+    "titulo": "[SEDUC PA] Estrategia SEDUC PA 2.000 vagas",
     "link": "https://www.estrategiaconcursos.com.br/blog/concurso-seduc-pa/",
-    "fonte": "ESTRATEGIA_SEDUC",
+    "fonte": "ESTRATEGIA",
     "tipo": "concurso_pa",
     "inicio": "2026-08-31",
     "fim": "2026-10-01",
     "expira": "2026-10-03"
+  },
+  {
+    "titulo": "[PA] Marapanim PA 381 vagas Folha Dirigida",
+    "link": "https://www.folhadirigida.com.br/concursos/concurso-marapanim-pa/",
+    "fonte": "MARAPANIM",
+    "tipo": "concurso_pa",
+    "inicio": "2026-08-30",
+    "fim": "2026-09-30",
+    "expira": "2026-10-02"
   }
 ]
