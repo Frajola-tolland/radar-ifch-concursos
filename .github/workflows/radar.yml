@@ -1,26 +1,26 @@
-name: Radar V6.5 ACTIVE-ONLY
+name: Radar V6.6 FULL ACTIVE
 on:
   schedule:
-    - cron: "0 */3 * * *"  # a cada 3h ao invés de 1h
+    - cron: "0 */3 * * *"
   workflow_dispatch:
-
 jobs:
   coleta:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - run: pip install requests beautifulsoup4
-      - name: Coleta só ativos
-        run: python radar-concursos/radar_multifonte_v6.py
-      - name: Gera index ACTIVE
-        run: python scripts/gerar_index.py
-      - name: Commit
-        run: |
-          git config user.name "bot-radar"
-          git config user.email "bot@radar.pa"
+        with: {python-version: '3.11'}
+      - run: pip install requests beautifulsoup4 lxml
+      - run: |
+          python radar-concursos/radar_multifonte_v6.py || true
+          python radar-ifch/radar_ifch.py || true
+          python radar-palestras/radar_palestras_v63.py || true
+          python scripts/gerar_index.py
+      - run: |
+          git config user.name "radar-bot"
+          git config user.email "radar@frajola.system"
           git add arquivo/ index.html
-          git commit -m "V6.5 auto $(date +%F-%H%M) - ${{ github.run_number }} PA ativos" || exit 0
+          git diff --staged --quiet || git commit -m "V6.6 FULL auto $(date +%F-%H%M) PA+IFCH+PAL ativos"
           git push
