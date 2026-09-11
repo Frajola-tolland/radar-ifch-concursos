@@ -4,59 +4,59 @@
     "link": "https://www.seduc.pa.gov.br/",
     "fonte": "SEDUC_OFICIAL",
     "tipo": "concurso_pa",
-    "inicio": "2026-09-10",
+    "inicio": "2026-09-11",
     "fim": "2026-10-01",
     "expira": "2026-10-03",
-    "capturado_em": "2026-09-10T22:50:57.276195",
+    "capturado_em": "2026-09-11T01:59:35.167261",
     "status": "ABERTO",
-    "dias_restantes": 21
+    "dias_restantes": 20
   },
   {
     "titulo": "[SEDUC PA] Estrategia 2000 vagas Professor Analista R$5.907",
     "link": "https://www.estrategiaconcursos.com.br/blog/concurso-seduc-pa/",
     "fonte": "ESTRATEGIA",
     "tipo": "concurso_pa",
-    "inicio": "2026-09-10",
+    "inicio": "2026-09-11",
     "fim": "2026-10-01",
     "expira": "2026-10-03",
-    "capturado_em": "2026-09-10T22:50:57.276221",
+    "capturado_em": "2026-09-11T01:59:35.167293",
     "status": "ABERTO",
-    "dias_restantes": 21
+    "dias_restantes": 20
   },
   {
     "titulo": "[PA] Marapanim PA 381 vagas Folha Dirigida",
     "link": "https://www.folhadirigida.com.br/concursos/concurso-marapanim-pa/",
     "fonte": "MARAPANIM",
     "tipo": "concurso_pa",
-    "inicio": "2026-09-10",
+    "inicio": "2026-09-11",
     "fim": "2026-09-30",
     "expira": "2026-10-02",
-    "capturado_em": "2026-09-10T22:50:57.276239",
+    "capturado_em": "2026-09-11T01:59:35.167317",
     "status": "ABERTO",
-    "dias_restantes": 20
+    "dias_restantes": 19
   },
   {
     "titulo": "[PA] DOCAS-PA 33 vagas reabertas provas 06 e 13 set",
     "link": "https://www.acheconcursos.com.br/concursos-para/concurso-docas-pa-2026-inscricoes-sao-reabertas-veja-os-novos-editais-91384",
     "fonte": "DOCAS_33",
     "tipo": "concurso_pa",
-    "inicio": "2026-09-10",
+    "inicio": "2026-09-11",
     "fim": "2026-09-16",
     "expira": "2026-09-18",
-    "capturado_em": "2026-09-10T22:50:57.276254",
+    "capturado_em": "2026-09-11T01:59:35.167337",
     "status": "ENCERRANDO",
-    "dias_restantes": 6
+    "dias_restantes": 5
   },
   {
     "titulo": "[PCI_PA] Abaetetuba PA retificação prorrogado",
     "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-abaetetuba-pa-divulga-nova-retificacao-de-concurso-publico",
     "fonte": "ABAETETUBA",
     "tipo": "concurso_pa",
-    "inicio": "2026-09-10",
+    "inicio": "2026-09-11",
     "fim": "2026-11-29",
     "expira": "2026-12-01",
-    "capturado_em": "2026-09-10T22:50:57.276268",
+    "capturado_em": "2026-09-11T01:59:35.167356",
     "status": "ABERTO",
-    "dias_restantes": 80
+    "dias_restantes": 79
   }
 ]
