@@ -7,7 +7,7 @@
     "inicio": "2026-09-13",
     "fim": "2026-10-01",
     "expira": "2026-10-03",
-    "capturado_em": "2026-09-13T07:44:45.438027",
+    "capturado_em": "2026-09-13T13:31:46.750685",
     "status": "ABERTO",
     "dias_restantes": 18
   },
@@ -19,7 +19,7 @@
     "inicio": "2026-09-13",
     "fim": "2026-10-01",
     "expira": "2026-10-03",
-    "capturado_em": "2026-09-13T07:44:45.438052",
+    "capturado_em": "2026-09-13T13:31:46.750716",
     "status": "ABERTO",
     "dias_restantes": 18
   },
@@ -31,7 +31,7 @@
     "inicio": "2026-09-13",
     "fim": "2026-09-30",
     "expira": "2026-10-02",
-    "capturado_em": "2026-09-13T07:44:45.438069",
+    "capturado_em": "2026-09-13T13:31:46.750738",
     "status": "ABERTO",
     "dias_restantes": 17
   },
@@ -43,7 +43,7 @@
     "inicio": "2026-09-13",
     "fim": "2026-09-16",
     "expira": "2026-09-18",
-    "capturado_em": "2026-09-13T07:44:45.438083",
+    "capturado_em": "2026-09-13T13:31:46.750755",
     "status": "ENCERRANDO",
     "dias_restantes": 3
   },
@@ -55,7 +55,7 @@
     "inicio": "2026-09-13",
     "fim": "2026-11-29",
     "expira": "2026-12-01",
-    "capturado_em": "2026-09-13T07:44:45.438096",
+    "capturado_em": "2026-09-13T13:31:46.750773",
     "status": "ABERTO",
     "dias_restantes": 77
   }
