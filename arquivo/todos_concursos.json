@@ -4,34 +4,22 @@
     "link": "https://www.seduc.pa.gov.br/",
     "fonte": "SEDUC_OFICIAL",
     "tipo": "concurso_pa",
-    "inicio": "2026-09-30",
+    "inicio": "2026-10-01",
     "fim": "2026-10-01",
     "expira": "2026-10-03",
-    "capturado_em": "2026-09-30T21:38:52.407590",
+    "capturado_em": "2026-10-01T03:02:12.808320",
     "status": "ENCERRANDO",
-    "dias_restantes": 1
+    "dias_restantes": 0
   },
   {
     "titulo": "[SEDUC PA] Estrategia 2000 vagas Professor Analista R$5.907",
     "link": "https://www.estrategiaconcursos.com.br/blog/concurso-seduc-pa/",
     "fonte": "ESTRATEGIA",
     "tipo": "concurso_pa",
-    "inicio": "2026-09-30",
+    "inicio": "2026-10-01",
     "fim": "2026-10-01",
     "expira": "2026-10-03",
-    "capturado_em": "2026-09-30T21:38:52.407609",
-    "status": "ENCERRANDO",
-    "dias_restantes": 1
-  },
-  {
-    "titulo": "[PA] Marapanim PA 381 vagas Folha Dirigida",
-    "link": "https://www.folhadirigida.com.br/concursos/concurso-marapanim-pa/",
-    "fonte": "MARAPANIM",
-    "tipo": "concurso_pa",
-    "inicio": "2026-09-30",
-    "fim": "2026-09-30",
-    "expira": "2026-10-02",
-    "capturado_em": "2026-09-30T21:38:52.407623",
+    "capturado_em": "2026-10-01T03:02:12.808354",
     "status": "ENCERRANDO",
     "dias_restantes": 0
   },
@@ -40,11 +28,11 @@
     "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-abaetetuba-pa-divulga-nova-retificacao-de-concurso-publico",
     "fonte": "ABAETETUBA",
     "tipo": "concurso_pa",
-    "inicio": "2026-09-30",
+    "inicio": "2026-10-01",
     "fim": "2026-11-29",
     "expira": "2026-12-01",
-    "capturado_em": "2026-09-30T21:38:52.407639",
+    "capturado_em": "2026-10-01T03:02:12.808396",
     "status": "ABERTO",
-    "dias_restantes": 60
+    "dias_restantes": 59
   }
 ]
