@@ -1,38 +1,14 @@
 [
   {
-    "titulo": "[SEDUC PA] Edital 2000 vagas FGV Diario 36.749 insc até 01/10",
-    "link": "https://www.seduc.pa.gov.br/",
-    "fonte": "SEDUC_OFICIAL",
-    "tipo": "concurso_pa",
-    "inicio": "2026-10-01",
-    "fim": "2026-10-01",
-    "expira": "2026-10-03",
-    "capturado_em": "2026-10-01T19:57:50.429364",
-    "status": "ENCERRANDO",
-    "dias_restantes": 0
-  },
-  {
-    "titulo": "[SEDUC PA] Estrategia 2000 vagas Professor Analista R$5.907",
-    "link": "https://www.estrategiaconcursos.com.br/blog/concurso-seduc-pa/",
-    "fonte": "ESTRATEGIA",
-    "tipo": "concurso_pa",
-    "inicio": "2026-10-01",
-    "fim": "2026-10-01",
-    "expira": "2026-10-03",
-    "capturado_em": "2026-10-01T19:57:50.429395",
-    "status": "ENCERRANDO",
-    "dias_restantes": 0
-  },
-  {
     "titulo": "[PCI_PA] Abaetetuba PA retificação prorrogado",
     "link": "https://www.pciconcursos.com.br/noticias/prefeitura-de-abaetetuba-pa-divulga-nova-retificacao-de-concurso-publico",
     "fonte": "ABAETETUBA",
     "tipo": "concurso_pa",
-    "inicio": "2026-10-01",
+    "inicio": "2026-10-02",
     "fim": "2026-11-29",
     "expira": "2026-12-01",
-    "capturado_em": "2026-10-01T19:57:50.429473",
+    "capturado_em": "2026-10-02T00:19:20.915430",
     "status": "ABERTO",
-    "dias_restantes": 59
+    "dias_restantes": 58
   }
 ]
